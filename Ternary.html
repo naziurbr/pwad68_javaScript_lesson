@@ -6,10 +6,17 @@
     <title>Document</title>
 </head>
 <body>
-    <script>
+    <!-- <script>
         let age = 18;
-        let output = (age >=16)? "Adult" : "Not Adult";
+        let output = (age >=18)? "Adult" : "Not Adult";
         document.write(output);
+    </script> -->
+    <div id="display"></div>
+    <script>
+        let age = 20;
+        let output = (age >=18)? "Adult" : "Not Adult";
+        document.getElementById ("display").innerHTML = output;
     </script>
+    
 </body>
 </html>
