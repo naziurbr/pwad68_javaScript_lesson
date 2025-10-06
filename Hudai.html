@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Forest & Wildlife — Hudai</title>
+    <meta name="description" content="Forest & Wildlife — conservation, species, gallery and how you can help." />
+    <style>
+        :root{
+            --accent:#0b6b3a;
+            --accent-2:#144d2f;
+            --muted:#6b6b6b;
+            --bg:#fbfdf9;
+            --card:#ffffff;
+            --glass: rgba(255,255,255,0.7);
+            --radius:12px;
+            --max-width:1100px;
+            --shadow: 0 6px 20px rgba(6,20,10,0.12);
+            font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+        }
+
+        *{box-sizing:border-box}
+        html,body{height:100%;margin:0;background:linear-gradient(180deg,#f6fbf6 0%, #eef7ee 100%);color:#13331f}
+        a{color:var(--accent)}
+
+        header{background:linear-gradient(90deg, rgba(11,107,58,0.9), rgba(20,77,47,0.95)); color: #fff;}
+        .wrap{max-width:var(--max-width);margin:0 auto;padding:1rem}
+        .nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 0}
+        .brand{display:flex;gap:.75rem;align-items:center;font-weight:700}
+        .brand .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,#7ed682,#0b6b3a);display:inline-flex;align-items:center;justify-content:center;color:#05220f;font-size:20px}
+        nav ul{list-style:none;margin:0;padding:0;display:flex;gap:1rem;align-items:center}
+        nav a{color:rgba(255,255,255,0.95);text-decoration:none;padding:.5rem .6rem;border-radius:8px}
+        nav a:hover{background:rgba(255,255,255,0.06)}
+        .cta{background:#fff;color:var(--accent-2);padding:.45rem .7rem;border-radius:10px;font-weight:600}
+
+        /* Mobile */
+        .menu-toggle{display:none;background:transparent;border:0;color:#fff;font-size:20px}
+
+        .hero{display:grid;grid-template-columns:1fr 480px;gap:2rem;align-items:center;padding:3rem 0}
+        .hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));padding:1.6rem;border-radius:var(--radius);box-shadow:var(--shadow);backdrop-filter: blur(6px)}
+        h1{margin:0 0 .6rem;font-size:clamp(1.6rem,2.6vw,2.6rem);line-height:1.05}
+        p.lead{color:var(--glass);margin:0 0 1rem}
+        .stats{display:flex;gap:1rem;margin-top:1rem}
+        .stat{background:var(--card);padding:.6rem .9rem;border-radius:10px;box-shadow:0 6px 18px rgba(12,40,20,0.06);min-width:110px}
+        .stat h3{margin:0;font-size:1.1rem}
+        .stat p{margin:0;color:var(--muted);font-size:.9rem}
+
+        .hero-media{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+        .hero-media img{display:block;width:100%;height:100%;object-fit:cover}
+
+        main{max-width:var(--max-width);margin:2rem auto;padding:0 1rem}
+        .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+        .card{background:var(--card);padding:1rem;border-radius:12px;box-shadow:var(--shadow)}
+        .card h3{margin-top:0}
+
+        .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+        .gallery img{width:100%;height:160px;object-fit:cover;border-radius:8px;cursor:pointer}
+
+        footer{padding:2rem 0;color:var(--muted)}
+
+        /* Responsive */
+        @media (max-width:1000px){
+            .hero{grid-template-columns:1fr 360px}
+            .grid{grid-template-columns:repeat(2,1fr)}
+            .gallery{grid-template-columns:repeat(3,1fr)}
+        }
+        @media (max-width:720px){
+            nav ul{display:none}
+            .menu-toggle{display:inline-block}
+            .hero{grid-template-columns:1fr;gap:1rem}
+            .hero-media{order:-1}
+            .grid{grid-template-columns:1fr}
+            .gallery{grid-template-columns:repeat(2,1fr)}
+        }
+
+        /* Small helpers */
+        .muted{color:var(--muted)}
+        .btn{display:inline-block;background:var(--accent);color:#fff;padding:.55rem .9rem;border-radius:10px;text-decoration:none}
+        .btn-outline{background:transparent;border:1px solid var(--accent);color:var(--accent);padding:.45rem .8rem;border-radius:10px}
+
+        /* Modal */
+        .modal{position:fixed;inset:0;background:rgba(0,0,0,0.6);display:none;align-items:center;justify-content:center;padding:2rem}
+        .modal.open{display:flex}
+        .modal .view{max-width:900px;width:100%;border-radius:12px;overflow:hidden}
+        .modal img{width:100%;height:auto;display:block}
+
+        /* form */
+        .form-row{display:flex;gap:.6rem}
+        .form-row .col{flex:1}
+        input,textarea,select{width:100%;padding:.6rem;border-radius:8px;border:1px solid #e4e7ea}
+        label{display:block;margin-bottom:.4rem;font-weight:600}
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="wrap nav">
+            <div class="brand">
+                <div class="logo" aria-hidden>FW</div>
+                <div>
+                    <div style="font-size:.98rem">Forest & Wildlife</div>
+                    <div style="font-size:.78rem;color:rgba(255,255,255,0.85);margin-top:2px">Conserve • Explore • Protect</div>
+                </div>
+            </div>
+
+            <nav aria-label="Main navigation">
+                <button class="menu-toggle" aria-expanded="false" aria-controls="main-menu">☰</button>
+                <ul id="main-menu">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#species">Species</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contribute">Contribute</a></li>
+                </ul>
+            </nav>
+
+            <div style="display:flex;gap:.6rem;align-items:center">
+                <a class="cta" href="#contribute">Donate</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="wrap hero">
+        <section class="hero-card">
+            <h1>Welcome to Forest & Wildlife</h1>
+            <p class="lead">Discover the beauty of forests and the incredible diversity of wildlife they support. Learn how you can help protect habitats and species for generations to come.</p>
+
+            <div class="stats" role="list">
+                <div class="stat" role="listitem"><h3>120+</h3><p class="muted">Species documented</p></div>
+                <div class="stat" role="listitem"><h3>4,200 ha</h3><p class="muted">Protected area</p></div>
+                <div class="stat" role="listitem"><h3>1,300+</h3><p class="muted">Volunteers</p></div>
+            </div>
+
+            <div style="margin-top:1.2rem;display:flex;gap:.6rem">
+                <a class="btn" href="#contribute">How to help</a>
+                <a class="btn-outline" href="#gallery">Explore gallery</a>
+            </div>
+        </section>
+
+        <aside class="hero-media">
+            <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=6a6a9d1cf1fb3a6d0e5d0e1a9a05e0a2" alt="Lush green forest with sunlight" loading="lazy">
+        </aside>
+    </div>
+
+    <main>
+        <section id="about" class="wrap" aria-labelledby="about-title">
+            <h2 id="about-title">About the Forests</h2>
+            <p class="muted">Forests are vital ecosystems that regulate climate, purify air and water, and provide habitat for countless species. Our mission is to document biodiversity and support conservation projects that protect habitats and communities.</p>
+        </section>
+
+        <section id="species" class="wrap" style="margin-top:1rem">
+            <h2>Featured Species</h2>
+            <div class="grid" style="margin-top:0.8rem">
+                <article class="card">
+                    <h3>Asian Elephant</h3>
+                    <p class="muted">A keystone species that maintains forest structure. Threats include habitat loss and human-wildlife conflict.</p>
+                </article>
+                <article class="card">
+                    <h3>Malayan Tiger</h3>
+                    <p class="muted">A top predator vital for ecosystem balance. Poaching and fragmentation endanger its populations.</p>
+                </article>
+                <article class="card">
+                    <h3>Hornbill</h3>
+                    <p class="muted">Large frugivores essential for seed dispersal; their nesting trees are conservation priorities.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="gallery" class="wrap" style="margin-top:1.6rem">
+            <h2>Gallery</h2>
+            <div class="gallery" aria-label="Photo gallery">
+                <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=800&auto=format&fit=crop" alt="Forest path" loading="lazy" data-large="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600&auto=format&fit=crop">
+                <img src="https://images.unsplash.com/photo-1499346030926-9a72daac6c63?q=80&w=800&auto=format&fit=crop" alt="Deer in forest" loading="lazy" data-large="https://images.unsplash.com/photo-1499346030926-9a72daac6c63?q=80&w=1600&auto=format&fit=crop">
+                <img src="https://images.unsplash.com/photo-1534080564583-6be75777b70a?q=80&w=800&auto=format&fit=crop" alt="Misty trees" loading="lazy" data-large="https://images.unsplash.com/photo-1534080564583-6be75777b70a?q=80&w=1600&auto=format&fit=crop">
+                <img src="https://images.unsplash.com/photo-1508672019048-805c876b67e2?q=80&w=800&auto=format&fit=crop" alt="Bird perched" loading="lazy" data-large="https://images.unsplash.com/photo-1508672019048-805c876b67e2?q=80&w=1600&auto=format&fit=crop">
+                <img src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?q=80&w=800&auto=format&fit=crop" alt="Forest stream" loading="lazy" data-large="https://images.unsplash.com/photo-1502082553048-f009c37129b9?q=80&w=1600&auto=format&fit=crop">
+                <img src="https://images.unsplash.com/photo-1470770903676-69b98201ea1c?q=80&w=800&auto=format&fit=crop" alt="Elephant herd" loading="lazy" data-large="https://images.unsplash.com/photo-1470770903676-69b98201ea1c?q=80&w=1600&auto=format&fit=crop">
+                <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=800&auto=format&fit=crop" alt="Tree canopy" loading="lazy" data-large="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1600&auto=format&fit=crop">
+                <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=800&auto=format&fit=crop" alt="Sunset over forest" loading="lazy" data-large="https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1600&auto=format&fit=crop">
+            </div>
+        </section>
+
+        <section id="contribute" class="wrap" style="margin-top:1.6rem">
+            <h2>Get involved</h2>
+            <div style="display:grid;grid-template-columns:2fr 1fr;gap:1rem;margin-top:.8rem">
+                <div class="card">
+                    <h3>Volunteer or donate</h3>
+                    <p class="muted">Join local surveys, support habitat restoration or donate to conservation programs. Every action counts.</p>
+                    <ul class="muted">
+                        <li>Habitat restoration events</li>
+                        <li>Citizen science surveys</li>
+                        <li>Education & outreach</li>
+                    </ul>
+                </div>
+
+                <aside class="card">
+                    <h3>Contact</h3>
+                    <form id="contact-form">
+                        <div class="form-row"><div class="col"><label for="name">Name</label><input id="name" name="name" required></div><div class="col"><label for="email">Email</label><input id="email" name="email" type="email" required></div></div>
+                        <div style="margin-top:.6rem"><label for="message">Message</label><textarea id="message" name="message" rows="4" required></textarea></div>
+                        <div style="margin-top:.6rem;display:flex;gap:.6rem;justify-content:flex-end"><button class="btn" type="submit">Send</button><button type="button" class="btn-outline" id="save-btn">Save locally</button></div>
+                        <div id="form-msg" aria-live="polite" style="margin-top:.6rem"></div>
+                    </form>
+                </aside>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap">
+            <div>&copy; <strong>Forest & Wildlife</strong> — Protecting habitats since 2025</div>
+            <div class="muted">Made with care • Follow us on <a href="#">Instagram</a></div>
+        </div>
+    </footer>
+
+    <div class="modal" id="modal" role="dialog" aria-hidden="true">
+        <div class="view">
+            <button id="close-modal" style="position:absolute;right:1rem;top:1rem;z-index:3;background:rgba(255,255,255,0.9);border:0;padding:.4rem .6rem;border-radius:8px">✕</button>
+            <img id="modal-img" alt="Expanded photo">
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const toggle = document.querySelector('.menu-toggle');
+        const menu = document.getElementById('main-menu');
+        toggle && toggle.addEventListener('click', () => {
+            const expanded = toggle.getAttribute('aria-expanded') === 'true';
+            toggle.setAttribute('aria-expanded', String(!expanded));
+            if (menu.style.display === 'block') menu.style.display = '';
+            else menu.style.display = 'block';
+        });
+
+        // Smooth scroll for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', (e) => {
+                const href = a.getAttribute('href');
+                if (href === '#') return;
+                const el = document.querySelector(href);
+                if (el) { e.preventDefault(); el.scrollIntoView({behavior:'smooth',block:'start'}); }
+                if (window.innerWidth < 720 && menu) menu.style.display = ''; // hide mobile menu
+            });
+        });
+
+        // Gallery modal
+        const modal = document.getElementById('modal');
+        const modalImg = document.getElementById('modal-img');
+        const closeBtn = document.getElementById('close-modal');
+        document.querySelectorAll('.gallery img').forEach(img => img.addEventListener('click', () => {
+            modal.classList.add('open');
+            modal.setAttribute('aria-hidden', 'false');
+            modalImg.src = img.dataset.large || img.src;
+            modalImg.alt = img.alt || '';
+        }));
+        closeBtn.addEventListener('click', () => { modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); modalImg.src = ''; });
+        modal.addEventListener('click', (e) => { if (e.target === modal) { modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); modalImg.src=''; } });
+
+        // Contact form handling
+        const form = document.getElementById('contact-form');
+        const formMsg = document.getElementById('form-msg');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const data = {name:form.name.value.trim(), email:form.email.value.trim(), message:form.message.value.trim(), at:new Date().toISOString()};
+            if (!data.name || !data.email || !data.message) { formMsg.textContent = 'Please fill all fields.'; formMsg.style.color='crimson'; return; }
+            // for demo, just save locally and show success
+            const saved = JSON.parse(localStorage.getItem('fw_contacts') || '[]');
+            saved.push(data); localStorage.setItem('fw_contacts', JSON.stringify(saved));
+            formMsg.textContent = 'Thank you — your message has been saved locally.'; formMsg.style.color='green';
+            form.reset();
+        });
+
+        document.getElementById('save-btn').addEventListener('click', () => {
+            const data = {name:form.name.value.trim(), email:form.email.value.trim(), message:form.message.value.trim(), at:new Date().toISOString()};
+            if (!data.name && !data.email && !data.message) { formMsg.textContent = 'Fill at least one field before saving.'; formMsg.style.color='crimson'; return; }
+            localStorage.setItem('fw_contact_draft', JSON.stringify(data));
+            formMsg.textContent = 'Draft saved locally.'; formMsg.style.color='green';
+        });
+
+        // Load draft if present
+        (function loadDraft(){
+            try{
+                const draft = JSON.parse(localStorage.getItem('fw_contact_draft') || 'null');
+                if (draft) { form.name.value = draft.name || ''; form.email.value = draft.email || ''; form.message.value = draft.message || ''; }
+            }catch(e){/* ignore */}
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>List of Fruits</h3>
+    <script>
+        let fruits = ["Apple", "Banana", "Cherry"];
+        for(let i = 0; i < fruits.length; i++) {
+            document.write(fruits[i] + "<br>");
+        }
+    </script>
+
+    <h3>Flower list</h3>
+
+    <script>
+        let flowers = ["  Rose", "Tulip", "Lily", "Daffodil"];
+      
+        for(let i = 0; i <flowers.length; i++){
+            document.write(flowers [i] + "<br>");
+        }
+    </script>
+    <hr>
+    <script>
+        document.write("<ol>");
+        for(let i = 0; i < flowers.length; i++){
+            document.write("<li>" + flowers[i] + "</li>");
+        }
+        document.write("</ol>");
+    </script>
+    <hr>
+    <script>
+        let output = "<ul>";
+            for (let i = 0; i < flowers.length; i++){
+                output += "<li>" + flowers[i] + "</li>";
+
+
+            }
+            output += "</ul>";
+            document.write(output);
+    </script>
+    
+
+</body>
+</html>

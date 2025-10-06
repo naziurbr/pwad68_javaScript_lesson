@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flower Table</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin: 100px auto;
+            font-family: Arial, sans-serif;
+        }
+
+        td, th {
+            border: 2px solid #353232;
+            padding: 11px 13px;
+            text-align: center;
+        }
+
+        tr:nth-child(even) {
+            background-color: #b49c9c;
+        }
+
+        tr:hover {
+            background-color: #b23f3f;
+        }
+
+        caption {
+            caption-side: top;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div id="tableContainer"></div>
+
+<script>
+    const flowers = ["Rose", "Tulip", "Lily", "Daffodil"];
+
+    // Create table
+    const table = document.createElement("table");
+
+    // Optional: Add a caption
+    const caption = document.createElement("caption");
+    caption.textContent = "Flower List";
+    table.appendChild(caption);
+
+    // Loop through flowers array
+    flowers.forEach(flower => {
+        const row = document.createElement("tr");
+        const cell = document.createElement("td");
+        cell.textContent = flower.trim(); // trim to remove extra spaces
+        row.appendChild(cell);
+        table.appendChild(row);
+    });
+
+    // Append table to container
+    document.getElementById("tableContainer").appendChild(table);
+</script>
+
+</body>
+</html>

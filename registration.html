@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        #output {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #aaa;
+            background-color: #876b6b;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <h3>Registration Form</h3>
+
+    <form name="rgs" id="rgsForm">
+        Name:<br>
+        <input type="text" name="fullname" id="fullname"><br><br>
+
+        Gender:<br>
+        <input type="radio" name="gender" value="male"> Male
+        <input type="radio" name="gender" value="female"> Female<br><br>
+
+        District:<br>
+        <select name="district" id="district">
+            <option value="">Select One</option>
+            <option value="Dhaka">Dhaka</option>
+            <option value="Sylhet">Sylhet</option>
+            <option value="Rajshahi">Rajshahi</option>
+            <option value="Khulna">Khulna</option>
+        </select><br><br>
+
+        Address:<br>
+        <textarea name="address" id="address" placeholder="Enter Address"></textarea><br><br>
+
+        <button type="button" onclick="form_handle()">Submit</button>
+    </form>
+
+    
+    <div id="output"></div>
+
+    <script>
+        function form_handle() {
+            const form = document.forms['rgs'];
+
+            const fname = form.fullname.value.trim();
+            const gender = form.gender.value;
+            const district = form.district.value;
+            const address = form.address.value.trim();
+
+            
+            if (!fname || !gender || !district || !address) {
+                document.getElementById('output').innerHTML = "<p style='color:red;'>Please fill in all fields.</p>";
+                return;
+            }
+
+           
+            const outputDiv = document.getElementById('output');
+            outputDiv.innerHTML = `
+                <h4>Submitted Data:</h4>
+                <p><strong>Name:</strong> ${fname}</p>
+                <p><strong>Gender:</strong> ${gender}</p>
+                <p><strong>District:</strong> ${district}</p>
+                <p><strong>Address:</strong> ${address}</p>
+            `;
+        }
+    </script>
+</body>
+</html>

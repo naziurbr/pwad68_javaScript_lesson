@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Modern Flower List</title>
+    <style>
+        /* Modern styling for UL */
+        ul.modern-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul.modern-list li {
+            background: #f0f0f0;
+            margin: 10px 0;
+            padding: 11px 12px;
+            border-radius: 10px;
+            font-family: 'Segoe UI', sans-serif;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        ul.modern-list li:hover {
+            background-color: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+
+<div id="flowerContainer"></div>
+
+<script>
+    // Example flower array
+    const flowers = ["Rose", "Tulip", "Daisy", "Sunflower", "Lily"];
+
+    // Create the UL
+    const ul = document.createElement("ul");
+    ul.className = "modern-list"; // Add modern styling class
+
+    // Add LIs to UL
+    flowers.forEach(flower => {
+        const li = document.createElement("li");
+        li.textContent = flower;
+        ul.appendChild(li);
+    });
+
+    // Add UL to the page
+    document.getElementById("flowerContainer").appendChild(ul);
+</script>
+
+</body>
+</html>
