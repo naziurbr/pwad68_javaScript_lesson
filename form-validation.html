@@ -1,0 +1,102 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Form</title>
+</head>
+<body>
+    <h2>Basic Form</h2>
+    <form action="#" method="POST" name="frm" onsubmit="return formValidation()">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" required><br><br>
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" placeholder="123-456-7890" required><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        function formValidation() {
+            // Get the value of the 'name' field
+            var name = document.frm.name.value;
+            
+            // Check if the 'name' field is empty
+            if (name === "") {
+                alert("Please enter your name.");
+                return false; // Prevent form submission
+            }
+
+            // Display the name value in an alert
+            alert("Name: " + name);
+            
+            // You can also return true to allow form submission if everything is valid
+            return true;
+        }
+    </script>
+</body>
+</html> -->
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Form with Alert</title>
+</head>
+<body>
+    <h2>Basic Form</h2>
+
+    <form id="myForm">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="address">Address:</label><br>
+        <input type="text" id="address" name="address" required><br><br>
+
+        <label for="phone">Phone Number:</label><br>
+        <input type="tel" id="phone" name="phone" required><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        // Get the form element
+        const form = document.getElementById('myForm');
+
+        // Listen for form submission
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent actual form submission
+
+            // Get form field values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const address = document.getElementById('address').value;
+            const phone = document.getElementById('phone').value;
+
+            // Show values in an alert
+            alert("Form Submitted!\n\n" +
+                "Name: " + name + "\n" +
+                "Email: " + email + "\n" +
+                "Address: " + address + "\n" +
+                "Phone: " + phone);
+        });
+    </script>
+</body>
+</html>
+
