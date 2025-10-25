@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hover Image Change</title>
+  <style>
+    img {
+      width: 300px;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <h2>Hover over the cat!</h2>
+
+  <img 
+    id="animal" 
+    src="https://placekitten.com/300/200" 
+    alt="Cat"
+    onmouseover="showLion()" 
+    onmouseout="showCat()"
+  >
+
+  <script>
+    function showLion() {
+      document.getElementById("animal").src = "https://upload.wikimedia.org/wikipedia/commons/7/73/Lion_waiting_in_Namibia.jpg";
+    }
+
+    function showCat() {
+      document.getElementById("animal").src = "https://images.unsplash.com/photo-1495360010541-f48722b34f7d?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1472";
+    }
+  </script>
+</body>
+</html>

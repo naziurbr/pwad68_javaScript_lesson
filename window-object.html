@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Form</title>
+</head>
+<body>
+    <h2>Registration Form</h2>
+    <form id="regForm">
+        Name: <input type="text" id="name"><br><br>
+        Address: <input type="text" id="address"><br><br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        document.getElementById('regForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            let name = document.getElementById('name').value;
+            let address = document.getElementById('address').value;
+
+            let popup = window.open("", "abc", "width=400,height=300");
+
+           
+            popup.document.write("<h1>Registration Info</h1>");
+            popup.document.write("Name: " + name + "<br>");
+            popup.document.write("Address: " + address + "<br>");
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case in Variables and function</title>
+    <script language = "javascript">
+        var Tax = .05
+        function addTax (item){
+            var Total=item + (item * Tax);
+            var NewTotal = Math .floor(Total);
+            var Fraction = Math . round (Total * 100)%100
+            if (Fraction<10){
+                Fraction = "0" + Fraction;
+            }
+            Total=NewTotal + "." + Fraction
+            alert ("Your total is $" + Total );
+        }
+
+    </script>
+
+    <a href="#"></a>
+</head> 
+
+</body>
+</html>
