@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lowest and Highest Number</title>
+</head>
+<body>
+    <button onclick="min_max()" >Click Here</button>
+   <script>
+    function min_max(){
+        let num1 = prompt ("Enter number 1");
+        let num2 = prompt ("Enter number 2");
+        let num3 = prompt ("Enter number 3");
+
+        const numbers = [num1, num2 , num3];
+        console.log(numbers)
+
+        let max = numbers[0];
+        let min = numbers[0];
+
+        for (let i = 0; i<numbers.length; i++){
+            if (numbers[i]>max){
+                max = numbers[i];
+            }
+            if(numbers[i]<min){
+                max = numbers [i];
+            }
+            if (numbers [i]<min){
+                min = numbers[i];
+            }
+        }
+          document.write("Highest number: " + max + "<br>");
+            document.write("Lowest number: " + min);
+
+    }
+   </script>
+        
+        
+</body>
+</html>
