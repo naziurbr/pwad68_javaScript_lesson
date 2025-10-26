@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power Calculator (Xⁿ)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background-color: #f7f9fc;
+            color: #333;
+        }
+        h1 {
+            color: #0056b3;
+        }
+        label {
+            display: block;
+            margin-top: 15px;
+            font-size: 18px;
+        }
+        input {
+            padding: 8px;
+            font-size: 16px;
+            width: 200px;
+            margin-top: 5px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 25px;
+            font-size: 20px;
+            color: #222;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Power Calculator (Xⁿ)</h1>
+
+    <label for="base">Enter base (X):</label>
+    <input type="number" id="base" placeholder="Enter base value">
+
+    <label for="exponent">Enter exponent (n):</label>
+    <input type="number" id="exponent" placeholder="Enter exponent value">
+
+    <button onclick="calculatePower()">Calculate Xⁿ</button>
+
+    <div class="result" id="result"></div>
+
+    <script>
+        function calculatePower() {
+            const base = parseFloat(document.getElementById("base").value);
+            const exponent = parseFloat(document.getElementById("exponent").value);
+            const resultDiv = document.getElementById("result");
+
+            // Input validation
+            if (isNaN(base) || isNaN(exponent)) {
+                resultDiv.textContent = "Please enter valid numbers for X and n.";
+                return;
+            }
+
+            // Calculate X^n using Math.pow()
+            const power = Math.pow(base, exponent);
+
+            resultDiv.textContent = `${base} raised to the power ${exponent} is ${power}.`;
+        }
+    </script>
+
+</body>
+</html>

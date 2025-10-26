@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factorial Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            color: #333;
+        }
+        label {
+            font-size: 18px;
+        }
+        input {
+            padding: 8px;
+            font-size: 16px;
+            margin: 10px 0;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Factorial Calculator</h1>
+    <label for="number">Enter a number:</label>
+    <input type="number" id="number" placeholder="Enter a positive integer">
+    <button onclick="calculateFactorial()">Calculate Factorial</button>
+
+    <div class="result" id="result"></div>
+
+    <script>
+        function calculateFactorial() {
+            const number = document.getElementById("number").value;
+            const resultDiv = document.getElementById("result");
+
+            if (number === "" || number < 0) {
+                resultDiv.textContent = "Please enter a valid non-negative integer.";
+                return;
+            }
+
+            let factorial = 1;
+            for (let i = 1; i <= number; i++) {
+                factorial *= i;
+            }
+
+            resultDiv.textContent = `The factorial of ${number} is ${factorial}.`;
+        }
+    </script>
+
+</body>
+</html>
